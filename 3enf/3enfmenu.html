@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3º Enfermagem - Disciplinas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #1e293b; 
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-gold: #d4af37;
+            --accent-blue: #38bdf8;
+            --border-tech: rgba(148, 163, 184, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: 'Roboto', sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background-image: 
+                linear-gradient(var(--border-tech) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border-tech) 1px, transparent 1px);
+            background-size: 50px 50px;
+            transform: perspective(500px) rotateX(60deg) translateY(-100px) translateZ(-200px);
+            opacity: 0.3;
+            pointer-events: none;
+            animation: grid-move 60s linear infinite;
+        }
+
+        @keyframes grid-move {
+            0% { transform: perspective(500px) rotateX(60deg) translateY(0) translateZ(-200px); }
+            100% { transform: perspective(500px) rotateX(60deg) translateY(50px) translateZ(-200px); }
+        }
+
+        .health-container {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .health-icon {
+            position: absolute;
+            bottom: -50px;
+            color: rgba(212, 175, 55, 0.15);
+            font-size: 1.5rem;
+            animation: flyUp linear forwards;
+        }
+
+        @keyframes flyUp {
+            to { transform: translateY(-110vh); opacity: 0; }
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            z-index: 2;
+        }
+
+        h1 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+        }
+
+        .subtitle {
+            font-family: 'Rajdhani', sans-serif;
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 0.5rem;
+        }
+
+        .cards-wrapper {
+            display: flex;
+            gap: 2rem;
+            z-index: 2;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 1200px;
+            padding: 0 20px;
+        }
+
+        .tech-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-tech);
+            border-radius: 12px;
+            width: 300px;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            position: relative;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .tech-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-blue);
+            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.15);
+            background: rgba(30, 41, 59, 0.9);
+        }
+
+        .icon-box {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-gold);
+            height: 80px;
+            width: 80px;
+            border-radius: 50%;
+            border: 1px dashed var(--border-tech);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s ease;
+        }
+
+        .tech-card:hover .icon-box {
+            color: var(--accent-blue);
+            border-color: var(--accent-blue);
+            transform: scale(1.1) rotate(360deg);
+        }
+
+        h2 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.5rem; 
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            min-height: 4rem; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-tech {
+            margin-top: auto;
+            padding: 0.8rem 2.5rem;
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid var(--text-secondary);
+            text-decoration: none;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            width: 80%;
+        }
+
+        .btn-tech::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: var(--accent-gold);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .tech-card:hover .btn-tech {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+        }
+
+        .btn-tech:hover {
+            color: #1e293b !important;
+            border-color: var(--accent-gold);
+        }
+
+        .btn-tech:hover::before {
+            left: 0;
+        }
+
+        .corner-deco {
+            position: absolute;
+            top: 0; right: 0;
+            width: 0; height: 0;
+            border-style: solid;
+            border-width: 0 40px 40px 0;
+            border-color: transparent var(--border-tech) transparent transparent;
+            opacity: 0.5;
+            transition: border-color 0.3s;
+        }
+
+        .tech-card:hover .corner-deco {
+            border-color: transparent var(--accent-blue) transparent transparent;
+        }
+
+        @media (max-width: 900px) {
+            .cards-wrapper { flex-direction: column; align-items: center; }
+            .tech-card { width: 100%; max-width: 320px; }
+            h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="health-container" id="healthContainer"></div>
+
+    <header>
+        <h1>Técnico em Enfermagem</h1>
+        <div class="subtitle">Grade Curricular - 3º Ano</div>
+    </header>
+
+    <div class="cards-wrapper">
+        
+        <!-- Disciplina Exemplo (Você pode alterar o nome abaixo) -->
+        <div class="tech-card">
+            <div class="corner-deco"></div>
+            <div class="icon-box">
+                <i class="fas fa-file-medical-alt"></i>
+            </div>
+            <h2>Sistemas de Informação em Saúde</h2>
+            <a href="sistemas_saude.html" class="btn-tech">Acessar</a>
+        </div>
+    </div>
+
+    <script>
+        function createHealthIcon() {
+            const container = document.getElementById('healthContainer');
+            const icon = document.createElement('i');
+            icon.classList.add('fas', 'fa-heartbeat', 'health-icon');
+            
+            icon.style.left = Math.random() * 95 + 'vw';
+            
+            const size = (Math.random() * 1 + 0.5) + 'rem';
+            icon.style.fontSize = size;
+            
+            const duration = (Math.random() * 5 + 5) + 's';
+            icon.style.animationDuration = duration;
+
+            container.appendChild(icon);
+
+            setTimeout(() => { icon.remove(); }, parseFloat(duration) * 1000);
+        }
+
+        setInterval(createHealthIcon, 1500);
+    </script>
+</body>
+</html>
