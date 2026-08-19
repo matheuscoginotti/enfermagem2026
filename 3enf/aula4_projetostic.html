@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 04 - Pacote Office e Word</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #0f172a; 
+            --card-bg: rgba(30, 41, 59, 0.85);
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --accent-gold: #d4af37;
+            --accent-blue: #38bdf8;
+            --accent-green: #10b981;
+            --border-tech: rgba(148, 163, 184, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: 'Roboto', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Fundo de Grade Estático */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(var(--border-tech) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border-tech) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.15;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* --- Cabeçalho Fixo --- */
+        header {
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            border-bottom: 1px solid var(--accent-blue);
+            padding: 1.5rem 20px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+
+        .btn-back {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s ease;
+        }
+
+        .btn-back:hover {
+            color: var(--text-primary);
+        }
+
+        header h1 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .header-spacer { width: 80px; }
+
+        /* --- Área de Leitura --- */
+        .lesson-container {
+            width: 100%;
+            max-width: 850px;
+            padding: 3rem 20px;
+            z-index: 2;
+        }
+
+        .lesson-title {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 3rem;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .lesson-meta {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--border-tech);
+            padding-bottom: 1rem;
+        }
+
+        /* Tipografia do Conteúdo */
+        .content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #cbd5e1;
+        }
+
+        .content h2 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 2rem;
+            color: var(--accent-blue);
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .content h3 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .content ul {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+        }
+
+        .content li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- Caixas de Destaque --- */
+        .highlight-box {
+            background: rgba(56, 189, 248, 0.1);
+            border-left: 4px solid var(--accent-blue);
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin: 2rem 0;
+        }
+
+        .highlight-box.warning {
+            background: rgba(212, 175, 55, 0.1);
+            border-left-color: var(--accent-gold);
+        }
+
+        .highlight-box strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            color: var(--text-primary);
+            text-transform: uppercase;
+        }
+
+        /* --- Botões de Navegação Inferior --- */
+        .lesson-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-tech);
+        }
+
+        .btn-nav {
+            padding: 0.8rem 1.5rem;
+            background: var(--card-bg);
+            color: var(--text-primary);
+            border: 1px solid var(--border-tech);
+            border-radius: 8px;
+            text-decoration: none;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-nav:hover {
+            background: var(--accent-blue);
+            color: #0f172a;
+            border-color: var(--accent-blue);
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.2rem; }
+            .lesson-title { font-size: 2.2rem; }
+            .content { font-size: 1rem; }
+            .lesson-nav { flex-direction: column; gap: 1rem; }
+            .btn-nav { justify-content: center; }
+            .header-spacer { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="projetostic.html" class="btn-back"><i class="fas fa-arrow-left"></i> Menu</a>
+        <h1>Projetos de TIC</h1>
+        <div class="header-spacer"></div>
+    </header>
+
+    <main class="lesson-container">
+        
+        <h1 class="lesson-title">Aula 04: Pacote Office e Microsoft Word</h1>
+        <div class="lesson-meta">
+            <i class="far fa-calendar-alt"></i> Módulo 1 • Professor: Matheus M. Coginotti
+        </div>
+
+        <div class="content">
+            <p>Seja elaborando um currículo, digitando um Procedimento Operacional Padrão (POP) ou preenchendo um relatório de passagem de plantão, vocês vão usar muito o <strong>Pacote Office</strong> na vida profissional. Na aula de hoje, conhecemos esse conjunto de programas e demos os primeiros passos no Microsoft Word.</p>
+            
+            <h2>1. O que é o Pacote Office?</h2>
+            <p>O Microsoft Office é um conjunto de aplicativos voltados para tarefas de escritório e produtividade. Na área da saúde, os três mais utilizados são:</p>
+            <ul>
+                <li><strong>Word:</strong> Processador de textos (onde fazemos relatórios, ofícios e manuais).</li>
+                <li><strong>Excel:</strong> Planilhas eletrônicas (usado para escalas de funcionários, controle de estoque de medicamentos e cálculos).</li>
+                <li><strong>PowerPoint:</strong> Apresentações de slides (essencial para palestras na SIPAT, treinamentos da equipe e trabalhos acadêmicos).</li>
+            </ul>
+
+            <h2>2. Microsoft Word: Primeiros Passos</h2>
+            <p>O Word é, sem dúvida, o editor de textos mais famoso do mundo. Quando o abrimos, a primeira aba de ferramentas que aparece no topo é o menu <strong>Página Inicial</strong>. É lá que passamos 90% do tempo formatando nossos documentos.</p>
+
+            <h3>Ferramentas da "Página Inicial"</h3>
+            <p>Dividimos essa aba em grupos essenciais para formatar um texto técnico e profissional:</p>
+
+            <ul>
+                <li><strong>Fonte:</strong> Define o "rosto" da letra. Em documentos oficiais de saúde e trabalhos acadêmicos, utilizamos fontes padrão como <em>Arial</em> ou <em>Times New Roman</em>, geralmente no tamanho 12.</li>
+                <li><strong>Estilos (N, I, S):</strong> 
+                    <br>- <b>Negrito (N)</b>: Usado para destacar palavras importantes (ex: nome do paciente ou nome do <b>MEDICAMENTO</b>).
+                    <br>- <i>Itálico (I)</i>: Geralmente usado para palavras estrangeiras ou citações.
+                    <br>- <u>Sublinhado (S)</u>: Cria uma linha debaixo do texto.
+                </li>
+                <li><strong>Alinhamento:</strong> Um relatório mal alinhado passa a impressão de desleixo. Podemos alinhar o texto à Esquerda, Centralizar (bom para títulos), à Direita ou <strong>Justificar</strong> (deixa o texto reto nas duas margens, sendo o formato exigido para documentos oficiais e acadêmicos).</li>
+            </ul>
+
+            <div class="highlight-box">
+                <strong><i class="fas fa-list-ul"></i> Marcadores e Numeração</strong>
+                <p>Dentro do grupo de Parágrafo, vimos a ferramenta de Marcadores (bolinhas) e Numeração. Elas são vitais na enfermagem! Se você estiver digitando um POP (Procedimento Operacional Padrão) sobre como higienizar as mãos ou puncionar uma veia, usar uma lista numerada garante que a equipe não pule nenhuma etapa do processo.</p>
+            </div>
+
+            <div class="highlight-box warning">
+                <strong><i class="fas fa-file-signature"></i> Dica de Ouro para Relatórios</strong>
+                <p>A tecnologia ajuda a deixar o texto bonito, mas a responsabilidade sobre o conteúdo é sua. Um bom relatório de enfermagem digitado no Word ou no Prontuário Eletrônico deve ser <strong>claro, objetivo, cronológico e sem gírias</strong>. A formatação deve facilitar a leitura rápida pelo médico ou pelo colega do próximo plantão. Use o Negrito com sabedoria para chamar atenção apenas ao que é grave ou muito relevante.</p>
+            </div>
+
+            <h3>Relembrando a Área de Transferência</h3>
+            <p>No canto esquerdo da Página Inicial, temos o botão Colar. Lembra da nossa Aula 01? O Word é o lugar perfeito para aplicarmos o <strong>Copiar (Ctrl+C)</strong> e <strong>Colar (Ctrl+V)</strong>, seja para reaproveitar o cabeçalho de um relatório anterior ou trazer informações de outros sistemas.</p>
+
+        </div>
+
+        <!-- Navegação Inferior -->
+        <div class="lesson-nav">
+            <a href="aula3_projetostic.html" class="btn-nav"><i class="fas fa-chevron-left"></i> Aula 03</a>
+            <a href="aula5_projetostic.html" class="btn-nav">Aula 05 <i class="fas fa-chevron-right"></i></a>
+        </div>
+
+    </main>
+
+</body>
+</html>
