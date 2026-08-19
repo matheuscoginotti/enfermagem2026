@@ -3,29 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistemas em Saúde - Aulas</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Chakra+Petch:wght@400;600;700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <title>Sistemas de Informação - 3º Enfermagem</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
-            /* Paleta Magitech Light (Suave e Tecnológica) */
-            --bg-color: #f8fafc; 
-            --grid-color: rgba(14, 165, 233, 0.1); 
-            
-            /* Cores dos nós/aulas */
-            --node-bg: rgba(255, 255, 255, 0.85); 
-            --node-border: #cbd5e1; 
-            --node-hover: rgba(224, 242, 254, 0.8);
-            
-            /* Textos e Detalhes */
-            --text-primary: #334155; 
-            --text-secondary: #64748b;
-            
-            /* Acentos */
-            --accent-gold: #d97706; 
-            --accent-cyan: #0284c7; 
-            --accent-locked: #94a3b8;
+            --bg-color: #1e293b; 
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-gold: #d4af37;
+            --accent-blue: #38bdf8;
+            --border-tech: rgba(148, 163, 184, 0.2);
         }
 
         * {
@@ -37,78 +27,77 @@
         body {
             background-color: var(--bg-color);
             color: var(--text-primary);
-            font-family: 'Rajdhani', sans-serif;
+            font-family: 'Roboto', sans-serif;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             overflow-x: hidden;
             position: relative;
-            padding-bottom: 80px;
+            padding-bottom: 2rem;
         }
 
-        /* --- Fundo Cibernético Suave --- */
+        /* Fundo de Grade */
         body::before {
             content: '';
             position: fixed;
-            width: 200vw;
-            height: 200vh;
+            top: 0; left: 0;
+            width: 200%;
+            height: 200%;
             background-image: 
-                linear-gradient(var(--grid-color) 1px, transparent 1px),
-                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+                linear-gradient(var(--border-tech) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border-tech) 1px, transparent 1px);
             background-size: 50px 50px;
-            transform: perspective(1000px) rotateX(60deg) translateY(-100px) translateZ(-200px);
-            mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
-            -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
-            opacity: 0.8;
+            transform: perspective(500px) rotateX(60deg) translateY(-100px) translateZ(-200px);
+            opacity: 0.3;
             pointer-events: none;
+            animation: grid-move 60s linear infinite;
             z-index: -1;
-            animation: grid-pulse 10s infinite alternate;
         }
 
-        @keyframes grid-pulse {
-            0% { opacity: 0.5; }
-            100% { opacity: 0.9; }
+        @keyframes grid-move {
+            0% { transform: perspective(500px) rotateX(60deg) translateY(0) translateZ(-200px); }
+            100% { transform: perspective(500px) rotateX(60deg) translateY(50px) translateZ(-200px); }
         }
 
-        /* --- Ícones Flutuantes (Background) --- */
-        .tech-bg {
+        .health-container {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             pointer-events: none;
             z-index: 0;
         }
 
-        .floating-icon {
+        .health-icon {
             position: absolute;
             bottom: -50px;
-            color: var(--accent-cyan);
+            color: rgba(212, 175, 55, 0.15);
             font-size: 1.5rem;
-            opacity: 0.3; 
-            filter: drop-shadow(0 0 2px var(--accent-cyan));
             animation: flyUp linear forwards;
         }
 
-        @keyframes flyUp { to { transform: translateY(-120vh); opacity: 0; } }
+        @keyframes flyUp {
+            to { transform: translateY(-110vh); opacity: 0; }
+        }
 
-        /* --- Header --- */
+        /* --- Cabeçalho e Botão Voltar --- */
         header {
-            width: 100%;
             text-align: center;
-            margin: 2rem 0 4rem;
+            margin-top: 3rem;
+            margin-bottom: 2rem;
             z-index: 2;
+            width: 100%;
+            max-width: 900px;
             position: relative;
         }
 
-        /* Botão Voltar */
         .btn-back {
             position: absolute;
             left: 20px;
             top: 10px;
-            color: var(--accent-cyan);
+            color: var(--text-secondary);
             text-decoration: none;
             font-family: 'Rajdhani', sans-serif;
-            font-weight: 700;
+            font-weight: 600;
             font-size: 1.1rem;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -119,297 +108,262 @@
         }
 
         .btn-back:hover {
-            color: var(--accent-gold);
+            color: var(--accent-blue);
         }
 
         h1 {
-            font-family: 'Cinzel Decorative', cursive;
-            font-size: 3.5rem;
-            font-weight: 700;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 2.5rem;
+            text-transform: uppercase;
             letter-spacing: 2px;
-            
-            background: linear-gradient(90deg, #b45309 0%, #1e293b 50%, #0284c7 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            
-            text-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            position: relative;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
             padding: 0 20px;
-            margin-top: 2rem;
-        }
-        
-        h1::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 150px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
-            opacity: 0.6;
         }
 
         .subtitle {
-            color: var(--accent-cyan);
             font-family: 'Rajdhani', sans-serif;
-            letter-spacing: 6px;
+            color: var(--accent-gold);
+            font-size: 1.1rem;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            font-size: 0.9rem;
-            margin-top: 20px;
-            font-weight: 600;
+            margin-top: 0.5rem;
         }
 
-        /* --- Mapa (Grid) --- */
-        .lesson-map {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 3rem 2rem;
+        /* --- Lista de Aulas/Materiais --- */
+        .content-wrapper {
+            width: 100%;
             max-width: 900px;
-            width: 95%;
+            padding: 0 20px;
             z-index: 2;
-            padding: 20px;
-        }
-
-        /* --- Item da Aula --- */
-        .lesson-item {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            position: relative;
+            gap: 1.5rem;
         }
 
-        .lesson-btn {
-            width: 85px;
-            height: 85px;
-            background: var(--node-bg);
-            border: 1px solid var(--node-border);
-            clip-path: polygon(15% 0, 85% 0, 100% 15%, 100% 85%, 85% 100%, 15% 100%, 0 85%, 0 15%);
-            
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-            position: relative;
-            text-decoration: none;
-            color: var(--text-primary);
-            backdrop-filter: blur(8px);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-
-        .lesson-number {
-            font-family: 'Chakra Petch', sans-serif;
-            font-weight: 700;
-            z-index: 2;
-        }
-
-        .status-badge {
-            position: absolute;
-            bottom: -8px;
-            background: #fff;
-            border: 1px solid var(--node-border);
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
+        .material-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-tech);
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 0.7rem;
-            color: var(--accent-locked);
-            z-index: 3;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            justify-content: space-between;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
         }
 
-        /* --- Estados --- */
-        .lesson-btn:hover {
-            transform: translateY(-5px);
-            background: #fff;
-            border-color: var(--accent-cyan);
-            box-shadow: 0 10px 25px rgba(14, 165, 233, 0.15);
-            color: var(--accent-cyan);
+        .material-card:hover {
+            transform: translateX(10px);
+            border-color: var(--accent-blue);
+            background: rgba(30, 41, 59, 0.9);
+            box-shadow: -5px 5px 20px rgba(56, 189, 248, 0.1);
         }
 
-        .lesson-item.accessed .lesson-btn {
-            border-color: var(--accent-gold);
+        .material-info {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .material-icon {
+            font-size: 2rem;
             color: var(--accent-gold);
-            background: #fff;
-            box-shadow: 0 4px 10px rgba(217, 119, 6, 0.1);
-        }
-        
-        .lesson-item.accessed .status-badge {
-            color: #fff;
-            background: var(--accent-gold);
-            border-color: var(--accent-gold);
-        }
-
-        .lesson-item.accessed .lesson-btn:hover {
-             box-shadow: 0 10px 25px rgba(217, 119, 6, 0.2);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            background: rgba(212, 175, 55, 0.1);
         }
 
-        /* --- Texto Informativo --- */
-        .access-info {
-            margin-top: 12px;
-            font-size: 0.75rem;
+        .material-text h3 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            margin-bottom: 0.2rem;
+            letter-spacing: 1px;
+        }
+
+        .material-text p {
+            font-size: 0.9rem;
             color: var(--text-secondary);
-            font-family: 'Chakra Petch', sans-serif;
+        }
+
+        .btn-access {
+            padding: 0.6rem 1.5rem;
+            background: transparent;
+            color: var(--accent-blue);
+            border: 1px solid var(--accent-blue);
+            text-decoration: none;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
-            text-align: center;
-            min-height: 1rem;
-            opacity: 0;
-            transform: translateY(-5px);
+            border-radius: 6px;
             transition: all 0.3s ease;
-            font-weight: 600;
+            white-space: nowrap;
         }
 
-        .lesson-item.accessed .access-info {
-            opacity: 1;
-            transform: translateY(0);
-            color: var(--accent-gold);
+        .btn-access:hover {
+            background: var(--accent-blue);
+            color: #1e293b;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
         }
 
-        /* --- Conectores --- */
-        .lesson-item:not(:nth-child(4n))::after {
-            content: '';
-            position: absolute;
-            right: -2rem;
-            top: 42px;
-            width: 2rem;
-            height: 2px;
-            background: linear-gradient(90deg, var(--node-border) 0%, var(--node-border) 50%, transparent 100%);
-            z-index: -1;
-            opacity: 0.5;
-        }
-
-        .lesson-item.accessed:not(:nth-child(4n))::after {
-            background: var(--accent-gold);
-            opacity: 0.8;
-        }
-
-        @media (max-width: 800px) {
-            .lesson-map {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2rem;
+        /* Responsividade */
+        @media (max-width: 768px) {
+            header { margin-top: 4rem; }
+            .btn-back { top: -30px; left: 20px; }
+            h1 { font-size: 1.8rem; }
+            .material-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.5rem;
             }
-            h1 { font-size: 2.2rem; margin-top: 3rem; }
-            .btn-back { top: 0; }
-            
-            .lesson-item:not(:nth-child(4n))::after { display: none; }
-            
-            .lesson-item:not(:nth-child(2n))::after {
-                content: '';
-                position: absolute;
-                right: -2rem;
-                top: 42px;
-                width: 2rem;
-                height: 2px;
-                background: var(--node-border);
-                display: block;
-            }
-            
-            .lesson-item.accessed:not(:nth-child(2n))::after {
-                 background: var(--accent-gold);
-            }
+            .btn-access { align-self: stretch; text-align: center; }
         }
     </style>
 </head>
 <body>
 
-    <div class="tech-bg" id="bgContainer"></div>
+    <div class="health-container" id="healthContainer"></div>
 
     <header>
-        <!-- Retorna para o menu do 3º Ano -->
+        <!-- Voltar para o Menu do 3º Ano -->
         <a href="3enfmenu.html" class="btn-back"><i class="fas fa-arrow-left"></i> Voltar</a>
-        
-        <!-- Altere o h1 para o nome exato da disciplina se precisar -->
-        <h1>Sistemas de Informação</h1>
+        <h1>Aplicativos Informatizados</h1>
         <div class="subtitle">3º Ano - Técnico em Enfermagem</div>
     </header>
 
-    <div class="lesson-map" id="lessonMap"></div>
+    <main class="content-wrapper">
+        
+        <!-- Aula 1 -->
+        <div class="material-card">
+            <div class="material-info">
+                <div class="material-icon">
+                    <i class="fas fa-book-open"></i> <!-- Ícone de leitura -->
+                </div>
+                <div class="material-text">
+                    <h3>Aula 01 - Introdução à Informática</h3>
+                    <p>Conceitos básicos, evolução tecnológica e impacto na enfermagem.</p>
+                </div>
+            </div>
+            <a href="aula1_sistemas.html" class="btn-access">Acessar Aula</a>
+        </div>
+
+        <!-- Aula 2 -->
+        <div class="material-card">
+            <div class="material-info">
+                <div class="material-icon">
+                    <i class="fas fa-laptop-medical"></i> <!-- Ícone de sistema/saúde -->
+                </div>
+                <div class="material-text">
+                    <h3>Aula 02 - Conceitos de Armazenamento em nuvem e navegação</h3>
+                    <p>Conhecendo os principais sistemas de gestão na Atenção Básica e Hospitalar.</p>
+                </div>
+            </div>
+            <a href="aula2_sistemas.html" class="btn-access">Acessar Aula</a>
+        </div>
+
+        <!-- Aula 3 -->
+        <div class="material-card">
+            <div class="material-info">
+                <div class="material-icon">
+                    <i class="fas fa-user-shield"></i> <!-- Ícone de segurança -->
+                </div>
+                <div class="material-text">
+                    <h3>Aula 03 - Noções sobre Inteligência Artificial</h3>
+                    <p>Noções gerais sobre IA.</p>
+                </div>
+            </div>
+            <a href="aula3_sistemas.html" class="btn-access">Acessar Aula</a>
+        </div>
+
+        <!-- Aula 4 -->
+        <div class="material-card">
+            <div class="material-info">
+                <div class="material-icon">
+                    <i class="fas fa-file-word"></i> <!-- Ícone de documento/Word -->
+                </div>
+                <div class="material-text">
+                    <h3>Aula 04 - Pacote Office e Microsoft Word</h3>
+                    <p>Introdução aos editores de texto, formatação básica e ferramentas essenciais para relatórios.</p>
+                </div>
+            </div>
+            <a href="aula4_sistemas.html" class="btn-access">Acessar Aula</a>
+        </div>
+
+        <!-- Aula 5 -->
+        <div class="material-card">
+            <div class="material-info">
+                <div class="material-icon">
+                    <i class="fas fa-align-left"></i> <!-- Ícone de alinhamento/formatação -->
+                </div>
+                <div class="material-text">
+                    <h3>Aula 05 - Menu Inserir, ABNT e Sumário</h3>
+                    <p>Normas de formatação acadêmica, espaçamento de parágrafos e como criar um sumário automático.</p>
+                </div>
+            </div>
+            <a href="aula5_sistemas.html" class="btn-access">Acessar Aula</a>
+        </div>
+
+        <!-- Aula 6 -->
+        <div class="material-card">
+            <div class="material-info">
+                <div class="material-icon">
+                    <i class="fas fa-paste"></i> <!-- Ícone de colar/prancheta -->
+                </div>
+                <div class="material-text">
+                    <h3>Aula 06 - Colar Especial e Menu Design</h3>
+                    <p>O truque do texto não formatado para trabalhos e quando evitar temas visuais no Word.</p>
+                </div>
+            </div>
+            <a href="aula6_sistemas.html" class="btn-access">Acessar Aula</a>
+        </div>
+
+        <!-- Aula 7 -->
+        <div class="material-card">
+            <div class="material-info">
+                <div class="material-icon">
+                    <i class="fas fa-bookmark"></i> <!-- Ícone de marcação/referência -->
+                </div>
+                <div class="material-text">
+                    <h3>Aula 07 - Menu Referências e TCC</h3>
+                    <p>O coração do trabalho acadêmico: criação de Sumário Automático, Notas de Rodapé e Citações.</p>
+                </div>
+            </div>
+            <a href="aula7_sistemas.html" class="btn-access">Acessar Aula</a>
+        </div>
+
+    </main>
 
     <script>
-        // Usei um prefixo diferente para não misturar com o progresso do 1º ano
-        const STORAGE_KEY_PREFIX = 'sistemas_lesson_';
-        const mapContainer = document.getElementById('lessonMap');
-
-        const lessonList = [];
-        for (let i = 1; i <= 15; i++) {
-            lessonList.push(i.toString());
-        }
-
-        function getTimeAgo(timestamp) {
-            if (!timestamp) return '';
-
-            const now = Date.now();
-            const diffMs = now - parseInt(timestamp);
-            const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-            const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
-            const diffMinutes = Math.floor(diffMs / (1000 * 60));
-
-            if (diffMinutes < 1) return 'ONLINE AGORA';
-            if (diffHours < 24) return 'ACESSADO HOJE';
-            if (diffDays === 1) return 'ACESSADO ONTEM';
-            return `${diffDays} DIAS ATRÁS`;
-        }
-
-        function accessLesson(lessonId) {
-            localStorage.setItem(STORAGE_KEY_PREFIX + lessonId, Date.now());
-            renderLessons();
-            
-            // Os arquivos dessa turma terão o final "_sistemas.html"
-            window.location.href = `aula${lessonId}_sistemas.html`;
-        }
-
-        function renderLessons() {
-            mapContainer.innerHTML = ''; 
-
-            lessonList.forEach(lessonId => {
-                const lastAccess = localStorage.getItem(STORAGE_KEY_PREFIX + lessonId);
-                const timeString = getTimeAgo(lastAccess);
-                const hasAccess = lastAccess !== null;
-
-                const lessonItem = document.createElement('div');
-                lessonItem.className = `lesson-item ${hasAccess ? 'accessed' : ''}`;
-
-                let fontSize = '2rem';
-
-                lessonItem.innerHTML = `
-                    <a href="#" class="lesson-btn" onclick="accessLesson('${lessonId}')">
-                        <span class="lesson-number" style="font-size: ${fontSize}; text-align: center;">${lessonId}</span>
-                        <div class="status-badge">
-                            <i class="fas ${hasAccess ? 'fa-check' : 'fa-lock'}"></i>
-                        </div>
-                    </a>
-                    <div class="access-info">${timeString}</div>
-                `;
-
-                mapContainer.appendChild(lessonItem);
-            });
-        }
-
-        function createFloatingIcon() {
-            const container = document.getElementById('bgContainer');
+        // Animação de batimentos no fundo
+        function createHealthIcon() {
+            const container = document.getElementById('healthContainer');
             const icon = document.createElement('i');
+            icon.classList.add('fas', 'fa-heartbeat', 'health-icon');
             
-            const icons = ['fa-laptop-medical', 'fa-heartbeat', 'fa-network-wired', 'fa-microchip'];
-            const randomIcon = icons[Math.floor(Math.random() * icons.length)];
-            
-            icon.classList.add('fas', randomIcon, 'floating-icon');
             icon.style.left = Math.random() * 95 + 'vw';
             
-            const size = (Math.random() * 1.2 + 0.8) + 'rem';
+            const size = (Math.random() * 1 + 0.5) + 'rem';
             icon.style.fontSize = size;
             
-            icon.style.animationDuration = (Math.random() * 8 + 4) + 's';
+            const duration = (Math.random() * 5 + 5) + 's';
+            icon.style.animationDuration = duration;
+
             container.appendChild(icon);
-            setTimeout(() => { icon.remove(); }, 12000);
+
+            setTimeout(() => { icon.remove(); }, parseFloat(duration) * 1000);
         }
 
-        renderLessons();
-        setInterval(createFloatingIcon, 1500);
-
+        setInterval(createHealthIcon, 1500);
     </script>
 </body>
 </html>
