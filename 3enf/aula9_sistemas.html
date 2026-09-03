@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 09 - Referências ABNT</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #0f172a; 
+            --card-bg: rgba(30, 41, 59, 0.85);
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --accent-gold: #d4af37;
+            --accent-blue: #38bdf8;
+            --accent-green: #10b981;
+            --border-tech: rgba(148, 163, 184, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: 'Roboto', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(var(--border-tech) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border-tech) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.15;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        header {
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            border-bottom: 1px solid var(--accent-blue);
+            padding: 1.5rem 20px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+
+        .btn-back {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s ease;
+        }
+
+        .btn-back:hover {
+            color: var(--text-primary);
+        }
+
+        header h1 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .header-spacer { width: 80px; }
+
+        .lesson-container {
+            width: 100%;
+            max-width: 850px;
+            padding: 3rem 20px;
+            z-index: 2;
+        }
+
+        .lesson-title {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 3rem;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .lesson-meta {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--border-tech);
+            padding-bottom: 1rem;
+        }
+
+        .content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #cbd5e1;
+        }
+
+        .content h2 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 2rem;
+            color: var(--accent-blue);
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .content h3 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .content p { margin-bottom: 1.5rem; }
+        .content ul, .content ol { margin-bottom: 1.5rem; padding-left: 2rem; }
+        .content li { margin-bottom: 0.8rem; }
+
+        .highlight-box {
+            background: rgba(56, 189, 248, 0.1);
+            border-left: 4px solid var(--accent-blue);
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin: 2rem 0;
+        }
+
+        .highlight-box.warning {
+            background: rgba(212, 175, 55, 0.1);
+            border-left-color: var(--accent-gold);
+        }
+
+        .highlight-box strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            color: var(--text-primary);
+            text-transform: uppercase;
+        }
+
+        /* Classes específicas para exemplos de citação */
+        .citation-example {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(148, 163, 184, 0.3);
+            padding: 1rem;
+            border-radius: 6px;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 1rem;
+            text-align: left; /* Demonstra o alinhamento real */
+        }
+        
+        .citation-breakdown {
+            list-style-type: none;
+            padding-left: 0 !important;
+        }
+        
+        .citation-breakdown li {
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .citation-breakdown span {
+            color: var(--accent-blue);
+            font-weight: bold;
+        }
+
+        .lesson-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-tech);
+        }
+
+        .btn-nav {
+            padding: 0.8rem 1.5rem;
+            background: var(--card-bg);
+            color: var(--text-primary);
+            border: 1px solid var(--border-tech);
+            border-radius: 8px;
+            text-decoration: none;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-nav:hover {
+            background: var(--accent-blue);
+            color: #0f172a;
+            border-color: var(--accent-blue);
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.2rem; }
+            .lesson-title { font-size: 2.2rem; }
+            .content { font-size: 1rem; }
+            .lesson-nav { flex-direction: column; gap: 1rem; }
+            .btn-nav { justify-content: center; }
+            .header-spacer { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="projetostic.html" class="btn-back"><i class="fas fa-arrow-left"></i> Menu</a>
+        <h1>Projetos de TIC</h1>
+        <div class="header-spacer"></div>
+    </header>
+
+    <main class="lesson-container">
+        
+        <h1 class="lesson-title">Aula 09: Referências Bibliográficas (A Página Final)</h1>
+        <div class="lesson-meta">
+            <i class="far fa-calendar-alt"></i> Módulo 1 • Professor: Matheus M. Coginotti
+        </div>
+
+        <div class="content">
+            <p>Para fecharmos o ciclo da ABNT antes do nosso trabalho prático, precisamos falar sobre a última folha de qualquer trabalho acadêmico ou documento oficial da enfermagem: as <strong>Referências</strong>.</p>
+            
+            <p>É aqui que listamos todos os livros, artigos e sites que usamos para embasar a pesquisa. Mas atenção: essa página possui regras de formatação no Word <strong>diferentes</strong> de todo o resto do trabalho!</p>
+
+            <h2><i class="fas fa-align-left"></i> 1. A Regra de Ouro (Formatação da Página)</h2>
+            
+            <p>Durante todo o TCC, nós usamos o alinhamento <em>Justificado</em> e o espaçamento de <em>1,5 linhas</em>. Na página de referências, nós <strong>quebramos essa regra</strong>. Veja como configurar no Word:</p>
+
+            <div class="highlight-box warning">
+                <strong><i class="fas fa-sliders-h"></i> Configuração Exclusiva</strong>
+                <ul>
+                    <li><strong>Alinhamento:</strong> O texto deve ser <strong>Alinhado à Esquerda</strong> (não justificado). As linhas vão ficar "desiguais" no final direito, e está correto.</li>
+                    <li><strong>Espaçamento entre linhas:</strong> Deve ser <strong>Simples (1,0)</strong> dentro da mesma referência.</li>
+                    <li><strong>Separação:</strong> Para separar um livro do outro na lista, você deve dar <strong>um espaço em branco</strong> (um "Enter" extra) entre cada referência.</li>
+                    <li><strong>Ordem:</strong> A lista inteira deve estar em <strong>Ordem Alfabética</strong>.</li>
+                </ul>
+            </div>
+
+            <h2><i class="fas fa-book"></i> 2. Modelo de Referência: Livros</h2>
+            <p>Quando você utiliza um livro físico ou e-book, a estrutura obrigatória é esta:</p>
+            
+            <div class="citation-example">
+                COGINOTTI, Matheus M. <em>Sistemas de Informação na Saúde: Um guia prático</em>. 1. ed. Itapetininga: Editora ETEC, 2026.
+            </div>
+            
+            <p><strong>Destrinchando o modelo:</strong></p>
+            <ul class="citation-breakdown">
+                <li><span>SOBRENOME, Nome:</span> O último sobrenome do autor vem primeiro, sempre em LETRAS MAIÚSCULAS, seguido por vírgula e o nome.</li>
+                <li><span>Título em Destaque:</span> O título do livro <strong>deve</strong> estar em <em>Itálico</em> ou em <strong>Negrito</strong>. (Apenas o título, o subtítulo fica normal).</li>
+                <li><span>Edição:</span> Abreviada como "ed." (ex: 1. ed., 2. ed.).</li>
+                <li><span>Cidade e Editora:</span> Cidade da publicação, seguida por dois pontos, e o nome da Editora.</li>
+                <li><span>Ano:</span> Ano de publicação finalizando com ponto final.</li>
+            </ul>
+
+            <h2><i class="fas fa-globe"></i> 3. Modelo de Referência: Sites e Artigos Online</h2>
+            <p>Hoje em dia, a maioria das pesquisas é feita na internet. Não basta colar apenas o "www..." no final do trabalho. A ABNT exige que você mostre quem escreveu, onde está hospedado e <strong>quando você acessou</strong> (já que sites podem sair do ar).</p>
+
+            <div class="citation-example">
+                MINISTÉRIO DA SAÚDE. Protocolos de Triagem na Atenção Básica. Portal Gov.br, Brasília, 2026. Disponível em: &lt;https://www.saude.gov.br/protocolos&gt;. Acesso em: 03 set. 2026.
+            </div>
+
+            <p><strong>Destrinchando o modelo:</strong></p>
+            <ul class="citation-breakdown">
+                <li><span>AUTOR OU ORGANIZAÇÃO:</span> Quem escreveu? Se não tiver um autor específico, usamos o nome da instituição em MAIÚSCULAS (Ex: MINISTÉRIO DA SAÚDE, COFEN, OMS).</li>
+                <li><span>Título da Página:</span> Sem negrito ou itálico.</li>
+                <li><span>Nome do Site:</span> Onde foi publicado.</li>
+                <li><span>Disponível em:</span> A expressão exata, seguida do link completo (frequentemente colocado entre os sinais de &lt; e &gt;).</li>
+                <li><span>Acesso em:</span> A data exata em que você entrou no site. O mês deve ser abreviado com 3 letras (exceto maio). Ex: 03 set. 2026.</li>
+            </ul>
+
+            <p>Tendo isso em mente, vocês estão oficialmente prontos para formatar qualquer documento acadêmico do zero ao fim. Vamos para o trabalho prático!</p>
+
+        </div>
+
+        <!-- Navegação Inferior -->
+        <div class="lesson-nav">
+            <a href="aula8_projetostic.html" class="btn-nav"><i class="fas fa-chevron-left"></i> Aula 08</a>
+            <a href="aula10_projetostic.html" class="btn-nav">Aula 10 (Trabalho) <i class="fas fa-chevron-right"></i></a>
+        </div>
+
+    </main>
+
+</body>
+</html>
