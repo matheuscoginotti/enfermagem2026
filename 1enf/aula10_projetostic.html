@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 10 - Pesquisa e Referências na Saúde</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #0f172a; 
+            --card-bg: rgba(30, 41, 59, 0.85);
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --accent-gold: #d4af37;
+            --accent-blue: #38bdf8;
+            --accent-green: #10b981;
+            --border-tech: rgba(148, 163, 184, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: 'Roboto', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(var(--border-tech) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border-tech) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.15;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        header {
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            border-bottom: 1px solid var(--accent-blue);
+            padding: 1.5rem 20px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+
+        .btn-back {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s ease;
+        }
+
+        .btn-back:hover { color: var(--text-primary); }
+
+        header h1 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .header-spacer { width: 80px; }
+
+        .lesson-container {
+            width: 100%;
+            max-width: 850px;
+            padding: 3rem 20px;
+            z-index: 2;
+        }
+
+        .lesson-title {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 3rem;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .lesson-meta {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--border-tech);
+            padding-bottom: 1rem;
+        }
+
+        .content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #cbd5e1;
+        }
+
+        .content h2 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 2rem;
+            color: var(--accent-blue);
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .content h3 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .content p { margin-bottom: 1.5rem; }
+        .content ul, .content ol { margin-bottom: 1.5rem; padding-left: 2rem; }
+        .content li { margin-bottom: 0.8rem; }
+
+        .highlight-box {
+            background: rgba(56, 189, 248, 0.1);
+            border-left: 4px solid var(--accent-blue);
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin: 2rem 0;
+        }
+
+        .highlight-box.warning {
+            background: rgba(212, 175, 55, 0.1);
+            border-left-color: var(--accent-gold);
+        }
+
+        .highlight-box strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            color: var(--text-primary);
+            text-transform: uppercase;
+        }
+
+        /* Grid para as bases de dados */
+        .db-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .db-card {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid var(--border-tech);
+            border-top: 4px solid var(--accent-gold);
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .db-card:hover {
+            transform: translateY(-5px);
+            background: rgba(30, 41, 59, 0.9);
+            border-top-color: var(--accent-blue);
+        }
+
+        .db-card h4 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .db-card p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .db-card a {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .db-card a:hover {
+            text-decoration: underline;
+        }
+
+        .lesson-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-tech);
+        }
+
+        .btn-nav {
+            padding: 0.8rem 1.5rem;
+            background: var(--card-bg);
+            color: var(--text-primary);
+            border: 1px solid var(--border-tech);
+            border-radius: 8px;
+            text-decoration: none;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-nav:hover {
+            background: var(--accent-blue);
+            color: #0f172a;
+            border-color: var(--accent-blue);
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.2rem; }
+            .lesson-title { font-size: 2.2rem; }
+            .db-grid { grid-template-columns: 1fr; }
+            .content { font-size: 1rem; }
+            .lesson-nav { flex-direction: column; gap: 1rem; }
+            .btn-nav { justify-content: center; }
+            .header-spacer { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="projetostic.html" class="btn-back"><i class="fas fa-arrow-left"></i> Menu</a>
+        <h1>Projetos de TIC</h1>
+        <div class="header-spacer"></div>
+    </header>
+
+    <main class="lesson-container">
+        
+        <h1 class="lesson-title">Aula 10: Onde Encontrar Boas Referências?</h1>
+        <div class="lesson-meta">
+            <i class="far fa-calendar-alt"></i> Módulo 1 • Professor: Matheus M. Coginotti
+        </div>
+
+        <div class="content">
+            <p>Saber formatar um TCC nas normas da ABNT é fundamental, mas de nada adianta um trabalho perfeitamente formatado se o conteúdo foi tirado da Wikipédia ou de um blog sem revisão médica. Na área da saúde, uma informação errada pode custar uma vida.</p>
+            
+            <p>Nesta aula, vamos descobrir as bibliotecas virtuais onde a verdadeira ciência da enfermagem acontece e como fazer o Google trabalhar a seu favor.</p>
+
+            <h2><i class="fas fa-search"></i> 1. Bases de Dados Científicas</h2>
+            <p>Quando os médicos e enfermeiros publicam suas descobertas, eles não as colocam em blogs comuns. Eles publicam em "Revistas Científicas", que ficam armazenadas em grandes bancos de dados. Aqui estão os quatro principais para você salvar nos seus favoritos:</p>
+
+            <div class="db-grid">
+                <!-- Card SciELO -->
+                <div class="db-card">
+                    <h4><i class="fas fa-book-medical"></i> SciELO</h4>
+                    <p>A maior e mais importante biblioteca científica da América Latina. Todos os artigos aqui passaram por revisão de outros cientistas. É excelente para buscar artigos completos em português e espanhol.</p>
+                    <a href="https://www.scielo.br" target="_blank">Acessar SciELO <i class="fas fa-external-link-alt"></i></a>
+                </div>
+
+                <!-- Card BVS -->
+                <div class="db-card">
+                    <h4><i class="fas fa-laptop-medical"></i> BVS (Biblioteca Virtual em Saúde)</h4>
+                    <p>Coordenada pela OPAS/OMS, é o acervo definitivo para os profissionais de saúde. Possui manuais, cartilhas do Ministério da Saúde e acesso à base LILACS, que é focada exclusivamente na literatura de saúde latino-americana.</p>
+                    <a href="https://bvsalud.org" target="_blank">Acessar BVS <i class="fas fa-external-link-alt"></i></a>
+                </div>
+
+                <!-- Card Google Acadêmico -->
+                <div class="db-card">
+                    <h4><i class="fas fa-graduation-cap"></i> Google Acadêmico</h4>
+                    <p>É o "Google normal", mas ele ignora blogs, sites de fofoca e fóruns, buscando APENAS dentro de universidades, revistas científicas e repositórios de teses. É a ferramenta mais rápida para achar PDFs.</p>
+                    <a href="https://scholar.google.com.br" target="_blank">Acessar Google Acadêmico <i class="fas fa-external-link-alt"></i></a>
+                </div>
+
+                <!-- Card Órgãos Oficiais -->
+                <div class="db-card">
+                    <h4><i class="fas fa-landmark"></i> COFEN e Ministério da Saúde</h4>
+                    <p>Para o seu TCC, você obrigatoriamente precisará citar leis e resoluções. As melhores fontes para isso são os portais governamentais oficiais (gov.br) e o Conselho Federal de Enfermagem.</p>
+                    <a href="http://www.cofen.gov.br" target="_blank">Acessar COFEN <i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+
+            <h2><i class="fas fa-lightbulb"></i> 2. Truques de Ouro para a Pesquisa</h2>
+            <p>Ao entrar no Google Acadêmico ou na BVS, se você digitar apenas a palavra <strong>ferida</strong>, vão aparecer milhões de resultados inúteis. Use essas técnicas:</p>
+
+            <ul>
+                <li><strong>O uso das ASPAS (" "):</strong> Se você quer pesquisar sobre um termo exato, coloque entre aspas. Pesquise por <code>"lesão por pressão"</code> ao invés de apenas escrever os termos soltos. Isso força o site a achar artigos que tenham essa exata combinação de palavras.</li>
+                <li><strong>O Filtro de Tempo (5 anos):</strong> A medicina avança rápido. Um tratamento que era padrão em 2010 pode ser considerado ultrapassado hoje. No menu lateral do Google Acadêmico, sempre clique em <strong>"Desde 2022"</strong> (ou filtre para os últimos 5 anos) para garantir que sua pesquisa está atualizada.</li>
+            </ul>
+
+            <div class="highlight-box warning">
+                <strong><i class="fas fa-robot"></i> E a Inteligência Artificial? (Gemini/ChatGPT)</strong>
+                <p>Nós vimos na Aula 03 que a IA é ótima para resumir textos ou te ajudar a <em>entender</em> um assunto complexo. Porém, <strong>NUNCA cite a Inteligência Artificial na sua página de Referências!</strong> As IAs podem inventar artigos que não existem (alucinação). Use a IA para aprender, mas vá nas bases oficiais (SciELO, BVS) para pegar a referência oficial do seu TCC.</p>
+            </div>
+
+        </div>
+
+        <!-- Navegação Inferior -->
+        <div class="lesson-nav">
+            <a href="aula9_projetostic.html" class="btn-nav"><i class="fas fa-chevron-left"></i> Aula 09</a>
+            <a href="aula11_projetostic.html" class="btn-nav">Aula 11 (Trabalho) <i class="fas fa-chevron-right"></i></a>
+        </div>
+
+    </main>
+
+</body>
+</html>
