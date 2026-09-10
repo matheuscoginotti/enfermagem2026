@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trabalho Avaliativo - Pesquisa e ABNT</title>
+    <title>Aula 10 - Pesquisa e Referências na Saúde</title>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -16,7 +16,6 @@
             --accent-gold: #d4af37;
             --accent-blue: #38bdf8;
             --accent-green: #10b981;
-            --accent-red: #ef4444;
             --border-tech: rgba(148, 163, 184, 0.2);
         }
 
@@ -80,9 +79,7 @@
             transition: color 0.3s ease;
         }
 
-        .btn-back:hover {
-            color: var(--text-primary);
-        }
+        .btn-back:hover { color: var(--text-primary); }
 
         header h1 {
             font-family: 'Rajdhani', sans-serif;
@@ -111,15 +108,11 @@
         }
 
         .lesson-meta {
-            color: var(--accent-red);
-            font-size: 1.1rem;
-            font-weight: bold;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
             margin-bottom: 3rem;
             border-bottom: 1px solid var(--border-tech);
             padding-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
 
         .content {
@@ -160,13 +153,8 @@
         }
 
         .highlight-box.warning {
-            background: rgba(239, 68, 68, 0.1);
-            border-left-color: var(--accent-red);
-        }
-
-        .highlight-box.success {
-            background: rgba(16, 185, 129, 0.1);
-            border-left-color: var(--accent-green);
+            background: rgba(212, 175, 55, 0.1);
+            border-left-color: var(--accent-gold);
         }
 
         .highlight-box strong {
@@ -177,6 +165,53 @@
             letter-spacing: 1px;
             color: var(--text-primary);
             text-transform: uppercase;
+        }
+
+        /* Grid para as bases de dados */
+        .db-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .db-card {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid var(--border-tech);
+            border-top: 4px solid var(--accent-gold);
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .db-card:hover {
+            transform: translateY(-5px);
+            background: rgba(30, 41, 59, 0.9);
+            border-top-color: var(--accent-blue);
+        }
+
+        .db-card h4 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .db-card p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .db-card a {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .db-card a:hover {
+            text-decoration: underline;
         }
 
         .lesson-nav {
@@ -213,6 +248,7 @@
         @media (max-width: 768px) {
             header h1 { font-size: 1.2rem; }
             .lesson-title { font-size: 2.2rem; }
+            .db-grid { grid-template-columns: 1fr; }
             .content { font-size: 1rem; }
             .lesson-nav { flex-direction: column; gap: 1rem; }
             .btn-nav { justify-content: center; }
@@ -230,66 +266,68 @@
 
     <main class="lesson-container">
         
-        <h1 class="lesson-title">Trabalho Prático: Pesquisa e Formatação ABNT</h1>
+        <h1 class="lesson-title">Aula 10: Onde Encontrar Boas Referências?</h1>
         <div class="lesson-meta">
-            <i class="fas fa-exclamation-circle"></i> Prazo Final: 15 de Setembro de 2026 (Terça-feira)
+            <i class="far fa-calendar-alt"></i> Módulo 1 • Professor: Matheus M. Coginotti
         </div>
 
         <div class="content">
-            <p>Chegou a hora de colocar em prática tudo o que vimos até aqui! Este trabalho servirá para avaliar a capacidade de vocês em realizar pesquisas técnicas, evitar plágio (usando ferramentas digitais com ética) e, principalmente, formatar um documento profissional no Microsoft Word utilizando as normas da ABNT.</p>
+            <p>Saber formatar um TCC nas normas da ABNT é fundamental, mas de nada adianta um trabalho perfeitamente formatado se o conteúdo foi tirado da Wikipédia ou de um blog sem revisão médica. Na área da saúde, uma informação errada pode custar uma vida.</p>
             
-            <h2><i class="fas fa-tasks"></i> 1. O Tema da Pesquisa</h2>
-            <p>Neste trabalho, o tema da pesquisa será <strong>LIVRE</strong>, desde que seja um assunto voltado para a área da <strong>Saúde ou Enfermagem</strong> (como doenças, procedimentos, inovações tecnológicas na saúde, ética profissional, etc.).</p>
-            
-            <p>Desenvolva a sua pesquisa respeitando o tamanho mínimo de <strong>4 páginas</strong> e máximo de <strong>8 páginas</strong> de texto escrito (não contar a capa, sumário ou página de bibliografia nessa soma).</p>
+            <p>Nesta aula, vamos descobrir as bibliotecas virtuais onde a verdadeira ciência da enfermagem acontece e como fazer o Google trabalhar a seu favor.</p>
 
-            <div class="highlight-box warning">
-                <strong><i class="fas fa-ban"></i> Atenção: Plágio e IA</strong>
-                <p>Vocês podem usar o Google e a IA (Gemini) para <strong>pesquisar e entender</strong> o tema, mas <strong>NÃO PODEM</strong> apenas "copiar e colar" a resposta. O texto deve ter a sua interpretação. Lembrem-se da Aula 06: textos da internet colados de qualquer jeito destroem a formatação e serão penalizados!</p>
+            <h2><i class="fas fa-search"></i> 1. Bases de Dados Científicas</h2>
+            <p>Quando os médicos e enfermeiros publicam suas descobertas, eles não as colocam em blogs comuns. Eles publicam em "Revistas Científicas", que ficam armazenadas em grandes bancos de dados. Aqui estão os quatro principais para você salvar nos seus favoritos:</p>
+
+            <div class="db-grid">
+                <!-- Card SciELO -->
+                <div class="db-card">
+                    <h4><i class="fas fa-book-medical"></i> SciELO</h4>
+                    <p>A maior e mais importante biblioteca científica da América Latina. Todos os artigos aqui passaram por revisão de outros cientistas. É excelente para buscar artigos completos em português e espanhol.</p>
+                    <a href="https://www.scielo.br" target="_blank">Acessar SciELO <i class="fas fa-external-link-alt"></i></a>
+                </div>
+
+                <!-- Card BVS -->
+                <div class="db-card">
+                    <h4><i class="fas fa-laptop-medical"></i> BVS (Biblioteca Virtual em Saúde)</h4>
+                    <p>Coordenada pela OPAS/OMS, é o acervo definitivo para os profissionais de saúde. Possui manuais, cartilhas do Ministério da Saúde e acesso à base LILACS, que é focada exclusivamente na literatura de saúde latino-americana.</p>
+                    <a href="https://bvsalud.org" target="_blank">Acessar BVS <i class="fas fa-external-link-alt"></i></a>
+                </div>
+
+                <!-- Card Google Acadêmico -->
+                <div class="db-card">
+                    <h4><i class="fas fa-graduation-cap"></i> Google Acadêmico</h4>
+                    <p>É o "Google normal", mas ele ignora blogs, sites de fofoca e fóruns, buscando APENAS dentro de universidades, revistas científicas e repositórios de teses. É a ferramenta mais rápida para achar PDFs.</p>
+                    <a href="https://scholar.google.com.br" target="_blank">Acessar Google Acadêmico <i class="fas fa-external-link-alt"></i></a>
+                </div>
+
+                <!-- Card Órgãos Oficiais -->
+                <div class="db-card">
+                    <h4><i class="fas fa-landmark"></i> COFEN e Ministério da Saúde</h4>
+                    <p>Para o seu TCC, você obrigatoriamente precisará citar leis e resoluções. As melhores fontes para isso são os portais governamentais oficiais (gov.br) e o Conselho Federal de Enfermagem.</p>
+                    <a href="http://www.cofen.gov.br" target="_blank">Acessar COFEN <i class="fas fa-external-link-alt"></i></a>
+                </div>
             </div>
 
-            <h2><i class="fas fa-file-alt"></i> 2. Estrutura Obrigatória do Documento</h2>
-            <p>O seu trabalho no Word deverá conter a seguinte estrutura, utilizando <strong>Quebras de Página</strong> (Ctrl + Enter) entre cada seção principal:</p>
-            <ol>
-                <li><strong>Capa:</strong> Nome da Instituição, título do trabalho, seu nome, cidade e ano.</li>
-                <li><strong>Sumário:</strong> Deve ser feito de forma <strong>Automática</strong> pelo Word (através do Menu Referências).</li>
-                <li><strong>Introdução:</strong> Apresentação do tema escolhido.</li>
-                <li><strong>Desenvolvimento:</strong> O corpo da sua pesquisa.</li>
-                <li><strong>Conclusão:</strong> O seu entendimento final sobre o assunto.</li>
-                <li><strong>Referências Bibliográficas:</strong> Os links, livros e fontes que você utilizou.</li>
-            </ol>
+            <h2><i class="fas fa-lightbulb"></i> 2. Truques de Ouro para a Pesquisa</h2>
+            <p>Ao entrar no Google Acadêmico ou na BVS, se você digitar apenas a palavra <strong>ferida</strong>, vão aparecer milhões de resultados inúteis. Use essas técnicas:</p>
 
-            <h2><i class="fas fa-ruler-combined"></i> 3. Checklist de Formatação (ABNT)</h2>
-            <p>Use este checklist como guia. O documento final será avaliado com base nestes critérios ensinados na <strong>Aula 08</strong>:</p>
             <ul>
-                <li><i class="fas fa-check"></i> <strong>Margens:</strong> Superior e Esquerda (3 cm) | Inferior e Direita (2 cm).</li>
-                <li><i class="fas fa-check"></i> <strong>Fonte:</strong> Arial ou Times New Roman, Tamanho 12.</li>
-                <li><i class="fas fa-check"></i> <strong>Alinhamento:</strong> Justificado.</li>
-                <li><i class="fas fa-check"></i> <strong>Espaçamento entre linhas:</strong> 1,5 linhas.</li>
-                <li><i class="fas fa-check"></i> <strong>Espaçamento de Parágrafo:</strong> 0 pt Antes e 0 pt Depois.</li>
-                <li><i class="fas fa-check"></i> <strong>Recuo:</strong> 1,25 cm na primeira linha de cada parágrafo.</li>
-                <li><i class="fas fa-check"></i> <strong>Paginação:</strong> Número da página no canto superior direito.</li>
+                <li><strong>O uso das ASPAS (" "):</strong> Se você quer pesquisar sobre um termo exato, coloque entre aspas. Pesquise por <code>"lesão por pressão"</code> ao invés de apenas escrever os termos soltos. Isso força o site a achar artigos que tenham essa exata combinação de palavras.</li>
+                <li><strong>O Filtro de Tempo (5 anos):</strong> A medicina avança rápido. Um tratamento que era padrão em 2010 pode ser considerado ultrapassado hoje. No menu lateral do Google Acadêmico, sempre clique em <strong>"Desde 2022"</strong> (ou filtre para os últimos 5 anos) para garantir que sua pesquisa está atualizada.</li>
             </ul>
 
-            <h2><i class="fas fa-paper-plane"></i> 4. Como Entregar?</h2>
-            <p>Nós não utilizaremos pen drives. Vocês deverão aplicar o conhecimento da <strong>Aula 02</strong>:</p>
-            <ol>
-                <li>Salve o seu trabalho no computador com o nome: <em>"Trabalho_ABNT_SeuNome"</em>.</li>
-                <li>Faça o <strong>Upload</strong> desse arquivo para o seu <strong>Google Drive</strong> pessoal.</li>
-                <li>Clique em Compartilhar e mude a permissão para <strong>"Qualquer pessoa com o link"</strong> como <strong>Leitor</strong>.</li>
-                <li>Copie o link gerado e envie para o professor (via plataforma da escola ou e-mail indicado).</li>
-            </ol>
-
-            <div class="highlight-box success">
-                <strong><i class="fas fa-rocket"></i> Bom trabalho!</strong>
-                <p>Usem a Aula 08 como "receita de bolo" e tudo dará certo. Em caso de dúvidas durante a formatação, revisitem o material no menu do site.</p>
+            <div class="highlight-box warning">
+                <strong><i class="fas fa-robot"></i> E a Inteligência Artificial? (Gemini/ChatGPT)</strong>
+                <p>Nós vimos na Aula 03 que a IA é ótima para resumir textos ou te ajudar a <em>entender</em> um assunto complexo. Porém, <strong>NUNCA cite a Inteligência Artificial na sua página de Referências!</strong> As IAs podem inventar artigos que não existem (alucinação). Use a IA para aprender, mas vá nas bases oficiais (SciELO, BVS) para pegar a referência oficial do seu TCC.</p>
             </div>
 
         </div>
 
+        <!-- Navegação Inferior -->
         <div class="lesson-nav">
-            <a href="aula8_sistemas.html" class="btn-nav"><i class="fas fa-chevron-left"></i> Aula 08</a>
-            <!-- Como é a aula final desse ciclo, deixamos apenas o botão de voltar -->
+            <a href="aula9_sistemashtml" class="btn-nav"><i class="fas fa-chevron-left"></i> Aula 09</a>
+            <a href="aula11_sistemas.html" class="btn-nav">Aula 11 (Trabalho) <i class="fas fa-chevron-right"></i></a>
         </div>
 
     </main>
