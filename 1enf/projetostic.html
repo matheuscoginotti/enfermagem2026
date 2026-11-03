@@ -172,4 +172,310 @@
 
         .material-icon {
             font-size: 2rem;
-            color: var(--accent
+            color: var(--accent-gold);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .material-text h3 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            margin-bottom: 0.2rem;
+            letter-spacing: 1px;
+        }
+
+        .material-text p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .btn-access {
+            padding: 0.6rem 1.5rem;
+            background: transparent;
+            color: var(--accent-blue);
+            border: 1px solid var(--accent-blue);
+            text-decoration: none;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .btn-access:hover {
+            background: var(--accent-blue);
+            color: #1e293b;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            header { margin-top: 4rem; }
+            .btn-back { top: -30px; left: 20px; }
+            h1 { font-size: 1.8rem; }
+            .material-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.5rem;
+            }
+            .btn-access { align-self: stretch; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="health-container" id="healthContainer"></div>
+
+    <header>
+        <!-- Voltar para o Menu do 1º Ano -->
+        <a href="1enfmenu.html" class="btn-back"><i class="fas fa-arrow-left"></i> Voltar</a>
+        <h1>Projetos de TIC</h1>
+        <div class="subtitle">1º Ano - Técnico em Enfermagem</div>
+    </header>
+
+    <main class="content-wrapper">
+        
+        <!-- Aula 1 -->
+        <div class="material-card">
+            <div class="material-info">
+                <div class="material-icon">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <div class="material-text">
+                    <h3>Aula 01 - Introdução à Informática</h3>
+                    <p>Conceitos básicos, evolução tecnológica e impacto na enfermagem.</p>
+                </div>
+            </div>
+            <a href="aula1_projetostic.html" class="btn-access">Acessar Aula</a>
+        </div>
+
+        <!-- Aula 2 -->
+        <div class="material-card">
+            <div class="material-info">
+                <div class="material-icon">
+                    <i class="fas fa-laptop-medical"></i>
+                </div>
+                <div class="material-text">
+                    <h3>Aula 02 - Armazenamento em nuvem e navegação</h3>
+                    <p>Conhecendo os principais sistemas de gestão na Atenção Básica e Hospitalar.</p>
+                </div>
+            </div>
+            <a href="aula2_projetostic.html" class="btn-access">Acessar Aula</a>
+        </div>
+
+        <!-- Aula 3 -->
+        <div class="material-card">
+            <div class="material-info">
+                <div class="material-icon">
+                    <i class="fas fa-user-shield"></i>
+                </div>
+                <div class="material-text">
+                    <h3>Aula 03 - Noções sobre Inteligência Artificial</h3>
+                    <p>Noções gerais sobre IA.</p>
+                </div>
+            </div>
+            <a href="aula3_projetostic.html" class="btn-access">Acessar Aula</a>
+        </div>
+
+        <!-- Aula 4 -->
+        <div class="material-card">
+            <div class="material-info">
+                <div class="material-icon">
+                    <i class="fas fa-file-word"></i>
+                </div>
+                <div class="material-text">
+                    <h3>Aula 04 - Pacote Office e Microsoft Word</h3>
+                    <p>Introdução aos editores de texto, formatação básica e ferramentas essenciais para relatórios.</p>
+                </div>
+            </div>
+            <a href="aula4_projetostic.html" class="btn-access">Acessar Aula</a>
+        </div>
+
+        <!-- Aula 5 -->
+        <div class="material-card">
+            <div class="material-info">
+                <div class="material-icon">
+                    <i class="fas fa-align-left"></i>
+                </div>
+                <div class="material-text">
+                    <h3>Aula 05 - Menu Inserir, ABNT e Sumário</h3>
+                    <p>Normas de formatação acadêmica, espaçamento de parágrafos e como criar um sumário automático.</p>
+                </div>
+            </div>
+            <a href="aula5_projetostic.html" class="btn-access">Acessar Aula</a>
+        </div>
+
+        <!-- Aula 6 -->
+        <div class="material-card">
+            <div class="material-info">
+                <div class="material-icon">
+                    <i class="fas fa-paste"></i>
+                </div>
+                <div class="material-text">
+                    <h3>Aula 06 - Colar Especial e Menu Design</h3>
+                    <p>O truque do texto não formatado para trabalhos e quando evitar temas visuais no Word.</p>
+                </div>
+            </div>
+            <a href="aula6_projetostic.html" class="btn-access">Acessar Aula</a>
+        </div>
+
+        <!-- Aula 7 -->
+        <div class="material-card">
+            <div class="material-info">
+                <div class="material-icon">
+                    <i class="fas fa-bookmark"></i>
+                </div>
+                <div class="material-text">
+                    <h3>Aula 07 - Menu Referências e TCC</h3>
+                    <p>O coração do trabalho acadêmico: criação de Sumário Automático, Notas de Rodapé e Citações.</p>
+                </div>
+            </div>
+            <a href="aula7_projetostic.html" class="btn-access">Acessar Aula</a>
+        </div>
+
+        <!-- Aula 8 -->
+        <div class="material-card">
+            <div class="material-info">
+                <div class="material-icon">
+                    <i class="fas fa-list-ol"></i>
+                </div>
+                <div class="material-text">
+                    <h3>Aula 08 - Passo a Passo Prático ABNT</h3>
+                    <p>O guia definitivo em 4 passos: margens, espaçamento, quebra de página e numeração no Word.</p>
+                </div>
+            </div>
+            <a href="aula8_projetostic.html" class="btn-access">Acessar Aula</a>
+        </div>
+
+        <!-- Aula 9 -->
+        <div class="material-card">
+            <div class="material-info">
+                <div class="material-icon">
+                    <i class="fas fa-quote-right"></i>
+                </div>
+                <div class="material-text">
+                    <h3>Aula 09 - Referências ABNT</h3>
+                    <p>Como formatar a página final: modelos para livros, sites e regras de alinhamento.</p>
+                </div>
+            </div>
+            <a href="aula9_projetostic.html" class="btn-access">Acessar Aula</a>
+        </div>
+
+        <!-- Aula 10 -->
+        <div class="material-card">
+            <div class="material-info">
+                <div class="material-icon">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+                <div class="material-text">
+                    <h3>Aula 10 - Pesquisa e Referências</h3>
+                    <p>Onde buscar informações científicas para o TCC (SciELO, BVS) e como evitar fake news na saúde.</p>
+                </div>
+            </div>
+            <a href="aula10_projetostic.html" class="btn-access">Acessar Aula</a>
+        </div>
+
+        <!-- Aula 11 / Trabalho de Word -->
+        <div class="material-card" style="border-color: #ef4444;">
+            <div class="material-info">
+                <div class="material-icon" style="color: #ef4444; background: rgba(239, 68, 68, 0.1);">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <div class="material-text">
+                    <h3>Aula 11 - Trabalho Prático ABNT</h3>
+                    <p style="color: #ef4444; font-weight: bold;">Entrega Final: 22 de Setembro de 2026</p>
+                </div>
+            </div>
+            <a href="aula11_projetostic.html" class="btn-access" style="border-color: #ef4444; color: #ef4444;">Ver Regras</a>
+        </div> <!-- FECHAMENTO CORRIGIDO AQUI -->
+
+        <!-- Aula 12 - PowerPoint Básico -->
+        <div class="material-card">
+            <div class="material-info">
+                <div class="material-icon" style="color: #f97316; background: rgba(249, 115, 22, 0.1);">
+                    <i class="fas fa-desktop"></i>
+                </div>
+                <div class="material-text">
+                    <h3>Aula 12 - Introdução ao PowerPoint</h3>
+                    <p>O início da apresentação visual: criação do primeiro slide em branco e menu de inserção.</p>
+                </div>
+            </div>
+            <a href="aula12_projetostic.html" class="btn-access" style="border-color: #f97316; color: #f97316;">Acessar Aula</a>
+        </div>
+
+        <!-- Aula 13 - PowerPoint Design -->
+        <div class="material-card">
+            <div class="material-info">
+                <div class="material-icon" style="color: #f97316; background: rgba(249, 115, 22, 0.1);">
+                    <i class="fas fa-magic"></i>
+                </div>
+                <div class="material-text">
+                    <h3>Aula 13 - Design, Transições e Animações</h3>
+                    <p>Modelos visuais pré-fabricados, controle de movimentação e animação de leitura.</p>
+                </div>
+            </div>
+            <a href="aula13_projetostic.html" class="btn-access" style="border-color: #f97316; color: #f97316;">Acessar Aula</a>
+        </div>
+
+        <!-- Aula 14 - PowerPoint Mestre -->
+        <div class="material-card">
+            <div class="material-info">
+                <div class="material-icon" style="color: #f97316; background: rgba(249, 115, 22, 0.1);">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <div class="material-text">
+                    <h3>Aula 14 - Slide Mestre Institucional</h3>
+                    <p>Configuração profunda do plano de fundo para criar o padrão visual de clínicas e hospitais.</p>
+                </div>
+            </div>
+            <a href="aula14_projetostic.html" class="btn-access" style="border-color: #f97316; color: #f97316;">Acessar Aula</a>
+        </div>
+
+        <!-- Aula 15 / Trabalho PowerPoint (ADICIONADA) -->
+        <div class="material-card" style="border-color: #ef4444;">
+            <div class="material-info">
+                <div class="material-icon" style="color: #ef4444; background: rgba(239, 68, 68, 0.1);">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                </div>
+                <div class="material-text">
+                    <h3>Aula 15 - Trabalho Prático PowerPoint</h3>
+                    <p style="color: #ef4444; font-weight: bold;">Valor: 10 Pontos | Entrega: 17 de Novembro de 2026</p>
+                </div>
+            </div>
+            <a href="aula15_projetostic.html" class="btn-access" style="border-color: #ef4444; color: #ef4444;">Ver Regras</a>
+        </div>
+
+    </main>
+
+    <script>
+        // Animação de batimentos no fundo
+        function createHealthIcon() {
+            const container = document.getElementById('healthContainer');
+            const icon = document.createElement('i');
+            icon.classList.add('fas', 'fa-heartbeat', 'health-icon');
+            
+            icon.style.left = Math.random() * 95 + 'vw';
+            
+            const size = (Math.random() * 1 + 0.5) + 'rem';
+            icon.style.fontSize = size;
+            
+            const duration = (Math.random() * 5 + 5) + 's';
+            icon.style.animationDuration = duration;
+
+            container.appendChild(icon);
+
+            setTimeout(() => { icon.remove(); }, parseFloat(duration) * 1000);
+        }
+
+        setInterval(createHealthIcon, 1500);
+    </script>
+</body>
+</html>
