@@ -160,6 +160,11 @@
             margin: 2rem 0;
         }
 
+        .highlight-box.email-box {
+            background: rgba(56, 189, 248, 0.1);
+            border-left-color: var(--accent-blue);
+        }
+
         .highlight-box strong {
             display: block;
             margin-bottom: 0.5rem;
@@ -168,6 +173,18 @@
             letter-spacing: 1px;
             color: var(--text-primary);
             text-transform: uppercase;
+        }
+
+        .email-code {
+            background: #0f172a;
+            border: 1px solid var(--border-tech);
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            font-family: monospace;
+            color: var(--accent-gold);
+            font-size: 1.05rem;
+            word-break: break-all;
+            margin: 0.5rem 0;
         }
 
         /* Grid para os temas (2 colunas) */
@@ -249,7 +266,7 @@
         <div class="lesson-meta">
             <div class="meta-item"><i class="fas fa-calendar-times"></i> Prazo Final: 17 de Novembro de 2026</div>
             <div class="meta-item"><i class="fas fa-star"></i> Valor: 10,0 pontos</div>
-            <div class="meta-item"><i class="fas fa-file-powerpoint"></i> Formato: Microsoft PowerPoint</div>
+            <div class="meta-item"><i class="fas fa-envelope"></i> Envio obrigatório via E-mail Institucional</div>
         </div>
 
         <div class="content">
@@ -300,12 +317,22 @@
             </ul>
 
             <h2><i class="fas fa-paper-plane"></i> 3. Como Entregar?</h2>
-            <p>Siga o protocolo de entrega em nuvem que já utilizamos:</p>
+            <p>O envio deverá ser feito <strong>exclusivamente por e-mail</strong>. Preste muita atenção aos dados de destino e à padronização do assunto para garantir o recebimento e a correção do seu trabalho:</p>
+            
+            <div class="highlight-box email-box">
+                <strong><i class="fas fa-at"></i> E-mail de Envio</strong>
+                <p style="margin-bottom: 0.5rem;">Envie o seu trabalho para o e-mail institucional do professor:</p>
+                <div class="email-code">matheus.coginotti@cps.sp.gov.br</div>
+                
+                <strong style="margin-top: 1.5rem;"><i class="fas fa-heading"></i> Assunto do E-mail (Obrigatório)</strong>
+                <p style="margin-bottom: 0.5rem;">O título do seu e-mail deve seguir estritamente o modelo abaixo:</p>
+                <div class="email-code">Trabalho Avaliativo PTIC Powerpoint - Nome dos integrantes do grupo</div>
+            </div>
+
             <ol>
-                <li>Salve o arquivo no computador com o nome: <em>"Apresentacao_SeuNome"</em>.</li>
-                <li>Faça o <strong>Upload</strong> desse arquivo `.pptx` para o seu <strong>Google Drive</strong>.</li>
-                <li>Clique em Compartilhar e mude a permissão para <strong>"Qualquer pessoa com o link"</strong> como <strong>Leitor</strong>.</li>
-                <li>Copie o link gerado e envie na plataforma indicada pelo professor.</li>
+                <li>Anexe o arquivo da sua apresentação (`.pptx`) diretamente no e-mail (ou insira o link do Google Drive no corpo do e-mail, certificando-se de liberar o acesso de leitura).</li>
+                <li>No corpo da mensagem, descreva o nome completo de todos os alunos do grupo.</li>
+                <li>Verifique se o assunto está idêntico ao padrão solicitado antes de clicar em enviar.</li>
             </ol>
 
             <div class="highlight-box">
