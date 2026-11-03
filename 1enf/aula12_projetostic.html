@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 12 - Introdução ao PowerPoint</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #0f172a; 
+            --card-bg: rgba(30, 41, 59, 0.85);
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --accent-gold: #d4af37;
+            --accent-blue: #38bdf8;
+            --accent-orange: #f97316;
+            --border-tech: rgba(148, 163, 184, 0.2);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background-color: var(--bg-color); color: var(--text-primary);
+            font-family: 'Roboto', sans-serif; min-height: 100vh;
+            display: flex; flex-direction: column; align-items: center;
+            overflow-x: hidden; position: relative;
+        }
+        body::before {
+            content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: linear-gradient(var(--border-tech) 1px, transparent 1px), linear-gradient(90deg, var(--border-tech) 1px, transparent 1px);
+            background-size: 50px 50px; opacity: 0.15; z-index: -1; pointer-events: none;
+        }
+        header {
+            width: 100%; background: rgba(15, 23, 42, 0.95); border-bottom: 1px solid var(--accent-orange);
+            padding: 1.5rem 20px; position: sticky; top: 0; z-index: 10;
+            display: flex; align-items: center; justify-content: space-between; backdrop-filter: blur(10px);
+        }
+        .btn-back {
+            color: var(--accent-orange); text-decoration: none; font-family: 'Rajdhani', sans-serif;
+            font-weight: 600; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px;
+            display: flex; align-items: center; gap: 8px; transition: color 0.3s ease;
+        }
+        .btn-back:hover { color: var(--text-primary); }
+        header h1 {
+            font-family: 'Rajdhani', sans-serif; font-size: 1.5rem; color: var(--text-primary);
+            text-transform: uppercase; letter-spacing: 1px; text-align: center;
+        }
+        .header-spacer { width: 80px; }
+        .lesson-container { width: 100%; max-width: 850px; padding: 3rem 20px; z-index: 2; }
+        .lesson-title { font-family: 'Rajdhani', sans-serif; font-size: 3rem; color: var(--accent-gold); margin-bottom: 1rem; line-height: 1.1; }
+        .lesson-meta { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 3rem; border-bottom: 1px solid var(--border-tech); padding-bottom: 1rem; }
+        .content { font-size: 1.1rem; line-height: 1.8; color: #cbd5e1; }
+        .content h2 { font-family: 'Rajdhani', sans-serif; font-size: 2rem; color: var(--accent-orange); margin-top: 3rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
+        .content p { margin-bottom: 1.5rem; }
+        .content ul { margin-bottom: 1.5rem; padding-left: 2rem; }
+        .content li { margin-bottom: 0.8rem; }
+        .highlight-box { background: rgba(249, 115, 22, 0.1); border-left: 4px solid var(--accent-orange); padding: 1.5rem; border-radius: 0 8px 8px 0; margin: 2rem 0; }
+        .highlight-box strong { display: block; margin-bottom: 0.5rem; font-family: 'Rajdhani', sans-serif; font-size: 1.2rem; letter-spacing: 1px; color: var(--text-primary); text-transform: uppercase; }
+        .lesson-nav { display: flex; justify-content: space-between; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border-tech); }
+        .btn-nav { padding: 0.8rem 1.5rem; background: var(--card-bg); color: var(--text-primary); border: 1px solid var(--border-tech); border-radius: 8px; text-decoration: none; font-family: 'Rajdhani', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; display: flex; align-items: center; gap: 10px; }
+        .btn-nav:hover { background: var(--accent-orange); color: #0f172a; border-color: var(--accent-orange); }
+        @media (max-width: 768px) { header h1 { font-size: 1.2rem; } .lesson-title { font-size: 2.2rem; } .content { font-size: 1rem; } .lesson-nav { flex-direction: column; gap: 1rem; } .btn-nav { justify-content: center; } .header-spacer { display: none; } }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="projetostic.html" class="btn-back"><i class="fas fa-arrow-left"></i> Menu</a>
+        <h1>Projetos de TIC</h1>
+        <div class="header-spacer"></div>
+    </header>
+    <main class="lesson-container">
+        <h1 class="lesson-title">Aula 12: Introdução ao PowerPoint</h1>
+        <div class="lesson-meta"><i class="far fa-calendar-alt"></i> Módulo 3 • Professor: Matheus M. Coginotti</div>
+        <div class="content">
+            <p>Seja para apresentar um Estudo de Caso Clínico no TCC, conduzir uma SIPAT (Semana Interna de Prevenção de Acidentes de Trabalho) ou treinar a equipe do seu plantão, o PowerPoint é a principal ferramenta de comunicação visual na área da saúde. Vamos aprender a usá-lo com postura profissional.</p>
+            
+            <h2><i class="fas fa-file"></i> 1. A Página Inicial: O Slide em Branco</h2>
+            <p>Ao abrir o PowerPoint, a melhor prática é fugir da poluição visual e começar com um <strong>Apresentação em Branco</strong>. O menu <em>Página Inicial</em> concentra as ferramentas fundamentais de estrutura:</p>
+            <ul>
+                <li><strong>Novo Slide:</strong> Clicando na parte inferior do botão "Novo Slide", você escolhe a estrutura (ex: "Título e Conteúdo" ou "Em Branco").</li>
+                <li><strong>Layout:</strong> Se você criou um slide e se arrependeu do formato, o botão "Layout" reorganiza as caixas de texto sem que você precise apagar a folha inteira.</li>
+                <li><strong>Formatação de Texto:</strong> Assim como no Word, você ajusta fonte, tamanho, negrito e cor. Lembre-se: em apresentações, o texto deve ser <strong>grande (mínimo tamanho 24)</strong> para que quem está no fundo do auditório consiga ler.</li>
+            </ul>
+
+            <h2><i class="fas fa-plus-circle"></i> 2. O Menu Inserir: Imagens e Formas</h2>
+            <p>Um slide preenchido apenas com texto funciona como um teleprompter gigante (e causa sono na plateia). O impacto de uma apresentação está na parte visual.</p>
+            <ul>
+                <li><strong>Imagens:</strong> Essencial para demonstrar anatomia, curativos ou evolução de lesões. Vá em <em>Inserir > Imagens > Este Dispositivo</em>. Ajuste o tamanho sempre pelas <strong>pontas</strong> da imagem para não distorcer o paciente.</li>
+                <li><strong>Formas:</strong> Utilize setas, círculos e retângulos para destacar partes de uma imagem clínica ou para criar pequenos fluxogramas de atendimento. Acesse <em>Inserir > Formas</em>, desenhe na tela e digite o texto diretamente dentro da forma.</li>
+            </ul>
+
+            <div class="highlight-box">
+                <strong><i class="fas fa-eye"></i> Regra de Ouro da Apresentação</strong>
+                <p>O PowerPoint é um <strong>apoio visual</strong> para a sua fala, não um documento de leitura. Se você for apenas ler o slide, você é desnecessário no palco. Use tópicos curtos e deixe o brilho do conteúdo para a sua explicação oral.</p>
+            </div>
+        </div>
+        <div class="lesson-nav">
+            <a href="aula11_projetostic.html" class="btn-nav"><i class="fas fa-chevron-left"></i> Aula 11 (Trabalho)</a>
+            <a href="aula13_projetostic.html" class="btn-nav">Aula 13 <i class="fas fa-chevron-right"></i></a>
+        </div>
+    </main>
+</body>
+</html>
